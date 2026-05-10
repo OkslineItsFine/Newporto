@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ibra — Portfolio</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=Instrument+Serif:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Tailwind Config -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              ink: "#111111",
+              paper: "#F5F2ED",
+              warm: "#E8E2D9",
+              accent: "#C8A98A",
+              muted: "#9A9590",
+              faint: "#D6D0C8",
+            },
+            fontFamily: {
+              display: ["Plus Jakarta Sans", "sans-serif"],
+              body: ["Plus Jakarta Sans", "sans-serif"],
+              serif: ["Instrument Serif", "serif"],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-paper text-ink font-body overflow-x-hidden">
+    <!-- ══════════════════════════════════
+       CURSOR
+  ══════════════════════════════════ -->
+    <div id="cursor-dot"></div>
+    <div id="cursor-ring"></div>
+
+    <!-- ══════════════════════════════════
+       NAVBAR
+  ══════════════════════════════════ -->
+    <nav id="navbar">
+      <div class="nav-inner">
+        <!-- Logo -->
+        <a href="#home" class="nav-logo">
+          <span class="logo-bracket">{</span>
+          <span class="logo-name">IBRA</span>
+          <span class="logo-bracket">}</span>
+        </a>
+
+        <!-- Desktop Links -->
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home" class="nav-link" data-text="Home">Home</a></li>
+          <li><a href="#about" class="nav-link" data-text="About">About</a></li>
+          <li>
+            <a href="#project" class="nav-link" data-text="Project">Project</a>
+          </li>
+          <li>
+            <a href="#contact" class="nav-link" data-text="Contact">Contact</a>
+          </li>
+        </ul>
+
+        <!-- Hamburger -->
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span class="ham-line"></span>
+          <span class="ham-line"></span>
+          <span class="ham-line"></span>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div class="mobile-menu" id="mobileMenu">
+        <div class="mob-menu-inner">
+          <a href="#home" class="mob-link" onclick="closeMob()">Home</a>
+          <a href="#about" class="mob-link" onclick="closeMob()">About</a>
+          <a href="#project" class="mob-link" onclick="closeMob()">Project</a>
+          <a href="#contact" class="mob-link" onclick="closeMob()">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ══════════════════════════════════
+       HERO SECTION
+  ══════════════════════════════════ -->
+    <section id="home" class="hero-section">
+      <!-- Parallax layers -->
+      <div class="parallax-bg" id="parallaxBg">
+        <!-- SVG geometric shapes generated via JS -->
+        <canvas id="heroCanvas"></canvas>
+      </div>
+
+      <!-- Grain overlay -->
+      <div class="grain-overlay"></div>
+
+      <div class="hero-content">
+        <!-- Top label -->
+        <!-- <div class="hero-label reveal">
+          <span class="hero-label-dot"></span>
+          <span>SMK Telkom Lampung</span>
+        </div> -->
+
+        <!-- Main heading -->
+        <div class="hero-heading reveal delay-1">
+          <span class="hero-greeting font-serif italic">Hello, I'm</span>
+          <h1 class="hero-name font-display">IBRA</h1>
+          <div class="hero-role">
+            <span class="role-line"></span>
+            <span class="role-text font-display" id="typedRole"></span>
+            <span class="role-cursor">|</span>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <p class="hero-desc reveal delay-2">
+          Siswa SMK Telkom Lampung yang tertarik dengan dunia teknologi &amp;
+          desain digital. Membangun hal-hal keren dari layar ke layar.
+        </p>
+
+        <!-- Social links -->
+        <div class="hero-socials reveal delay-4">
+          <a href="https://github.com/OkslineItsFine" class="soc-link"
+            >GitHub</a
+          >
+          <span class="soc-dot">·</span>
+          <a href="https://www.instagram.com/ibraaatq/" class="soc-link"
+            >Instagram</a
+          >
+          <span class="soc-dot">·</span>
+          <a href="#" class="soc-link">LinkedIn</a>
+        </div>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="scroll-cue">
+        <div class="scroll-mouse">
+          <div class="scroll-wheel"></div>
+        </div>
+        <span>Scroll</span>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+       TICKER / MARQUEE
+  ══════════════════════════════════ -->
+    <div class="ticker-wrap">
+      <div class="ticker-track">
+        <span>Front End Developer</span>
+        <span class="ticker-dot">✦</span>
+        <span>Vibes Coder</span>
+        <span class="ticker-dot">✦</span>
+        <span>Photography</span>
+        <span class="ticker-dot">✦</span>
+        <span>SMK Telkom Lampung</span>
+        <span class="ticker-dot">✦</span>
+        <span>Creative Coder</span>
+        <span class="ticker-dot">✦</span>
+        <span>Web Developer</span>
+        <span class="ticker-dot">✦</span>
+        <!-- duplicate for seamless loop -->
+        <span>Front End Developer</span>
+        <span class="ticker-dot">✦</span>
+        <span>Vibes Coder</span>
+        <span class="ticker-dot">✦</span>
+        <span>Photography</span>
+        <span class="ticker-dot">✦</span>
+        <span>SMK Telkom Lampung</span>
+        <span class="ticker-dot">✦</span>
+        <span>Creative Coder</span>
+        <span class="ticker-dot">✦</span>
+        <span>Web Developer</span>
+        <span class="ticker-dot">✦</span>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════
+       ABOUT SECTION
+  ══════════════════════════════════ -->
+    <section id="about" class="about-section">
+      <!-- Parallax BG -->
+      <div class="about-parallax-bg" id="aboutBg"></div>
+
+      <div class="about-inner">
+        <!-- Image side -->
+        <div class="about-img-col reveal-left">
+          <div class="about-img-frame">
+            <!-- Photo with blend/transparency effect -->
+            <img src="mea.jpg" alt="Ibra" class="about-photo" />
+            <!-- Overlay card -->
+            <div class="about-badge-card">
+              <div class="badge-dot"></div>
+              <span class="badge-status">Active</span>
+            </div>
+          </div>
+          <!-- Floating label -->
+          <div class="about-img-label">
+            <span class="label-line"></span>
+            <span>Iqbal Brillian Taqwa</span>
+          </div>
+        </div>
+
+        <!-- Content side -->
+        <div class="about-content-col reveal-right">
+          <div class="sec-tag">About Me</div>
+          <h2 class="sec-title font-display">
+            Seorang pelajar<br />yang
+            <span class="italic font-serif">curious.</span>
+          </h2>
+
+          <p class="about-p">
+            Halo! Nama saya <strong>Iqbal Brillian Taqwa</strong>, biasa di
+            panggil <strong>Ibra</strong>, saya adalah siswa kelas XI di
+            <strong>SMK Telkom Lampung</strong>
+            jurusan Rekayasa Perangkat Lunak. Saya punya ketertarikan dalam
+            dunia web development, desain UI/UX, dan fotografi.
+          </p>
+          <p class="about-p">
+            Saya percaya teknologi bukan sekadar alat — ini adalah canvas untuk
+            mengekspresikan ide. Setiap project adalah kesempatan untuk belajar
+            lebih, membangun lebih, dan tumbuh lebih.
+          </p>
+
+          <!-- Skills -->
+          <div class="skills-block">
+            <span class="skills-label">// Skills</span>
+            <div class="skills-grid">
+              <div class="skill-item">
+                <span class="skill-name">HTML / CSS</span>
+                <div class="skill-bar">
+                  <div class="skill-fill" style="--w: 90%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">JavaScript</span>
+                <div class="skill-bar">
+                  <div class="skill-fill" style="--w: 75%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">Figma / UI Design</span>
+                <div class="skill-bar">
+                  <div class="skill-fill" style="--w: 63%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">Photography</span>
+                <div class="skill-bar">
+                  <div class="skill-fill" style="--w: 68%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <a href="#contact" class="btn-primary mt-2 inline-flex"
+            >Get In Touch →</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+       PROJECT SECTION
+  ══════════════════════════════════ -->
+    <section id="project" class="project-section">
+      <div class="project-inner">
+        <div class="sec-head reveal">
+          <div class="sec-tag">Selected Work</div>
+          <h2 class="sec-title font-display">
+            Projects yang<br />pernah aku
+            <span class="italic font-serif">buat.</span>
+          </h2>
+          <p class="sec-sub">
+            Beberapa karya yang sudah selesai dibuat, dari web apps hingga
+            desain visual.
+          </p>
+        </div>
+
+        <!-- Project Grid -->
+        <div class="proj-grid">
+          <div class="proj-card reveal delay-1" data-category="Web Dev">
+            <div class="proj-card-img proj-img-1">
+              <div class="proj-overlay">
+                <a
+                  href="https://jadwalkelas11rpl2.netlify.app/"
+                  class="proj-link-btn"
+                  >View Project ↗</a
+                >
+              </div>
+            </div>
+            <div class="proj-info">
+              <span class="proj-tag">Web Development</span>
+              <h3 class="proj-name font-display">Jadwal Kelas</h3>
+              <p class="proj-desc">
+                Aplikasi siswa untuk memudahkan akses informasi mengenai jadwal
+                pelajaran dan piket.
+              </p>
+              <div class="proj-tech">
+                <span>HTML</span><span>Tailwind</span><span>JavaScript</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="proj-card reveal delay-2" data-category="UI/UX">
+            <div class="proj-card-img proj-img-2">
+              <div class="proj-overlay">
+                <a href="#" class="proj-link-btn">View Project ↗</a>
+              </div>
+            </div>
+            <div class="proj-info">
+              <span class="proj-tag">UI / UX Design</span>
+              <h3 class="proj-name font-display">Charity App UI</h3>
+              <p class="proj-desc">
+                Desain UI aplikasi donasi pohon, menggunakan Figma.
+              </p>
+              <div class="proj-tech">
+                <span>Figma</span><span>Prototyping</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="proj-card reveal delay-3" data-category="Photography">
+            <div class="proj-card-img proj-img-3">
+              <div class="proj-overlay">
+                <a href="#" class="proj-link-btn">View Project ↗</a>
+              </div>
+            </div>
+            <div class="proj-info">
+              <span class="proj-tag">Photography</span>
+              <h3 class="proj-name font-display">Event Photography</h3>
+              <p class="proj-desc">
+                Koleksi foto jalanan yang menangkap momen-momen autentik di SMK
+                Telkom.
+              </p>
+              <div class="proj-tech">
+                <span>Sony Alpha</span><span>Lightroom</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="proj-card reveal delay-1" data-category="Web Dev">
+            <div class="proj-card-img proj-img-4">
+              <div class="proj-overlay">
+                <a href="https://fihs.netlify.app/" class="proj-link-btn"
+                  >View Project ↗</a
+                >
+              </div>
+            </div>
+            <div class="proj-info">
+              <span class="proj-tag">Web Development</span>
+              <h3 class="proj-name font-display">Game Website</h3>
+              <p class="proj-desc">
+                Game ikan berbasis website yang simple dan menyenangkan.
+              </p>
+              <div class="proj-tech">
+                <span>HTML</span><span>CSS</span><span>JS</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+       CONTACT SECTION
+  ══════════════════════════════════ -->
+    <section id="contact" class="contact-section">
+      <div class="contact-parallax-bg" id="contactBg"></div>
+
+      <div class="contact-new-inner">
+        <!-- Top: heading centered -->
+        <div class="contact-top reveal">
+          <div class="sec-tag">Get In Touch</div>
+          <h2 class="sec-title font-display">
+            Ada ide?<br />
+            <span class="italic font-serif">Ngobrol yuk.</span>
+          </h2>
+          <p class="contact-sub">
+            Saya selalu terbuka untuk kolaborasi project, diskusi teknologi,
+            atau sekadar ngobrol santai.
+          </p>
+        </div>
+
+        <!-- Info row -->
+        <div class="contact-info-row reveal delay-1">
+          <div class="contact-info-item">
+            <div class="ci-label">Email</div>
+            <a href="mailto:okslineitsfin@gmail.com" class="ci-val"
+              >okslineitsfine@gmail.com</a
+            >
+          </div>
+          <div class="contact-info-divider"></div>
+          <div class="contact-info-item">
+            <div class="ci-label">Location</div>
+            <span class="ci-val">Lampung, Indonesia</span>
+          </div>
+          <div class="contact-info-divider"></div>
+          <div class="contact-info-item">
+            <div class="ci-label">School</div>
+            <span class="ci-val">SMK Telkom Lampung</span>
+          </div>
+        </div>
+
+        <!-- Form full-width -->
+        <div class="contact-form-full reveal delay-2">
+          <form
+            class="contact-form"
+            id="contactForm"
+            onsubmit="handleSubmit(event)"
+          >
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Nama Kamu</label>
+                <input
+                  type="text"
+                  class="form-input"
+                  placeholder="Max"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Email</label>
+                <input
+                  type="email"
+                  class="form-input"
+                  placeholder="max@email.com"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Subject</label>
+                <input
+                  type="text"
+                  class="form-input"
+                  placeholder="Mau ngobrol soal apa nih?"
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Pesan</label>
+              <textarea
+                class="form-input form-textarea"
+                placeholder="Tulis pesanmu di sini..."
+                required
+              ></textarea>
+            </div>
+            <div class="form-bottom-row">
+              <div class="contact-socials">
+                <a href="https://github.com/OkslineItsFine" class="csoc"
+                  >GitHub</a
+                >
+                <a href="https://www.instagram.com/ibraaatq/" class="csoc"
+                  >Instagram</a
+                >
+                <a href="#" class="csoc">LinkedIn</a>
+              </div>
+              <button type="submit" class="btn-primary">
+                Kirim Pesan
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path
+                    d="M1 8h14M9 2l6 6-6 6"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div class="form-success" id="formSuccess">
+              ✓ Pesan terkirim! Saya akan balas secepatnya, see u
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+       FOOTER
+  ══════════════════════════════════ -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <span class="footer-logo font-display">Ibra.</span>
+          <span class="footer-copy">© 2025 · SMK Telkom Lampung</span>
+        </div>
+        <div class="footer-center">
+          <span class="footer-made">Crafted with ♥ &amp; ☕</span>
+        </div>
+        <a href="#home" class="footer-totop">
+          <span>Back to top</span>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path
+              d="M7 13V1M1 7l6-6 6 6"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </a>
+      </div>
+    </footer>
+
+    <!-- Script -->
+    <script src="script.js"></script>
+  </body>
+</html>
